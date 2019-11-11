@@ -1,0 +1,20 @@
+server:
+  port: 8050
+
+spring:
+  application:
+    name: api-gateway
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URL:http://user:password@localhost:5000}/eureka/
+
+    register-with-eureka: false
+    fetch-registry: true
+
+zuul:
+  routes:
+    client-service:
+      path: /client-service/**
+      serviceId: EUREKA-CLIENT
